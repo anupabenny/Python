@@ -25,10 +25,13 @@ def main():
     bds_results = []
     while not bds_result_queue.empty():
         bds_results.append(bds_result_queue.get())
-
     bds_total_sum = sum(bds_results)
-
-    print("Total sum:", bds_total_sum)
+    
+    print(f"Total number of chunks {nprocs}")
+    print(f"Chunk size per process {bds_chunk_size}")
+    for i in range(nprocs):
+        print(f"The process {i+1} has chunk sum as {bds_results[i]}")
+    print("Total sum of chunks:", bds_total_sum)
 
 if __name__ == "__main__":
     main()
